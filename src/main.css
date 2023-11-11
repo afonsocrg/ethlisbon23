@@ -1,0 +1,26 @@
+
+  .logo, .buttonContainer, h1, p {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .customButton {
+    background-color: #4CAF50; /* Example color */
+    color: white;
+    border-radius: 5px;
+    padding: 30px 30px; /* Increased padding for larger size */
+    font-size: 18px; /* Larger font size */
+    transition: background-color 0.3s ease;
+    margin: 10px;
+  }
+  
+  .customButton:hover {
+    background-color: #367c2b; /* Darker shade for hover effect */
+  }
+  
+  .footer {
+    /* Footer styling */
+  }
+  
+  /* Additional styling */
+  
