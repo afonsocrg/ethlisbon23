@@ -145,7 +145,7 @@ const MapComponent = ({ owner_address }) => {
 
   const pieConfig = {
     appendPadding: 10,
-    data: dummyChartData,
+    data: selectedLocation ? selectedLocation.cultivars_percentages : dummyChartData,
     angleField: "value",
     colorField: "type",
     radius: 1,
@@ -163,7 +163,7 @@ const MapComponent = ({ owner_address }) => {
   };
 
   const barConfig = {
-    data: dummyBarChartData,
+    data: selectedLocation ? selectedLocation.production_report : dummyBarChartData,
     xField: "value",
     yField: "year",
     seriesField: "year",
@@ -175,10 +175,22 @@ const MapComponent = ({ owner_address }) => {
         <div>
           <h3>{selectedLocation.name}</h3>
           <p>
-            <strong>Contact:</strong> +123456789
+            <strong>Contact:</strong> {selectedLocation.phone}
           </p>
           <p>
-            <strong>VAT Number:</strong> 123456789
+            <strong>Email:</strong> {selectedLocation.email}
+          </p>
+          <p>
+            <strong>Address:</strong> {selectedLocation.map_address}
+          </p>
+          <p>
+            <strong>Production Capacity:</strong> {selectedLocation.production_capacity}
+          </p>
+          <p>
+            <strong>Licenses:</strong> {selectedLocation.licenses.join(', ')}
+          </p>
+          <p>
+            <strong>Website:</strong> {selectedLocation.website}
           </p>
           <p>
             <strong>Address:</strong> 123 Green Lane, Farmville, FA
@@ -235,7 +247,7 @@ const MapComponent = ({ owner_address }) => {
           <div
             style={{ display: "flex", justifyContent: "center", width: "100%" }}
           >
-            <LoadScript googleMapsApiKey="AIzaSyBFIlC8KTzxZBiATJG-c4uzB2HtyCCsyJU">
+            <LoadScript googleMapsApiKey="AIzaSyBiaF6BBgosRCYJP-pDAv4hI7nl5UZw2IM">
               <GoogleMap
                 mapContainerStyle={{ width: "100%", height: "500px" }}
                 onLoad={handleOnLoad}
