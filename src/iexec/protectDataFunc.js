@@ -26,7 +26,7 @@ const getDataProtector = async () => {
 }
 
 //protect data by calling protectData method from @iexec/dataprotector
-const protectDataFunc = async (data: DataSchema, name: string) => {
+const protectDataFunc = async (data, name) => {
   const dataProtector = await getDataProtector();
 
   const { address } = await dataProtector.protectData({
@@ -38,9 +38,9 @@ const protectDataFunc = async (data: DataSchema, name: string) => {
 
 //revoke access by calling revokeOneAccess method from @iexec/dataprotector
 const revokeAccessFunc = async (
-  protectedData: string,
-  authorizedUser: string,
-  authorizedApp: string
+  protectedData,
+  authorizedUser,
+  authorizedApp
 ) => {
   const dataProtector = await getDataProtector();
 
@@ -56,10 +56,10 @@ const revokeAccessFunc = async (
 
 //grant access by calling grantAccess method from @iexec/dataprotector
 const grantAccessFunc = async (
-  protectedData: string,
-  authorizedUser: string,
-  authorizedApp: string,
-  pricePerAccess: number
+  protectedData,
+  authorizedUser,
+  authorizedApp,
+  pricePerAccess
 ) => {
   const dataProtector = await getDataProtector();
 
@@ -73,13 +73,13 @@ const grantAccessFunc = async (
   return accessHash;
 };
 
-const fetchGrantedAccess = async (protectedData: string, authorizedUser: string) => {
+const fetchGrantedAccess = async (protectedData, authorizedUser) => {
   const dataProtector = await getDataProtector();
   const grantedAccessArray = await dataProtector.fetchGrantedAccess({ protectedData: protectedData, authorizedUser: authorizedUser });
   return grantedAccessArray;
 }
 
-const fetchProtectedDataFunc = async (owner: string) => {
+const fetchProtectedDataFunc = async (owner) => {
   const dataProtector = await getDataProtector();
   const data = await dataProtector.fetchProtectedData({ owner });
   return data;

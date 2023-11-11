@@ -24,7 +24,7 @@ const bellecour = {
     },
     default: { name: 'Blockscout', url: 'https://blockscout-bellecour.iex.ec' },
   },
-} as const satisfies Chain;
+}
 
 const chains = [bellecour];
 const { provider } = configureChains(chains, [w3mProvider({ projectId })]);

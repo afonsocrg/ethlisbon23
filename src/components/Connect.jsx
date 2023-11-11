@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Typography, Space } from 'antd';
 import { useWeb3Modal } from '@web3modal/react';
 import { useAccount, useConnect } from 'wagmi';

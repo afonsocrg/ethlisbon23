@@ -4,24 +4,21 @@ import { getAccount } from '@wagmi/core';
 //fetch my contacts by calling fetchMyContacts method from @iexec/web3mail
 export const fetchMyContacts = async () => {
   try {
-    const account = getAccount();
-    console.log("account", account)
-    console.log("account.connector", account.connector)
-    const provider = await account.connector?.getProvider();
+    const provider = await  getAccount().connector.options.getProvider();
     const web3mail = new IExecWeb3mail(provider);
     const contacts = await web3mail.fetchMyContacts();
     return contacts;
   } catch (error) {
-    console.error('Error fetching contacts: ', error);
+    console.error('Error fetching contacts:', error);
     throw error;
   }
 };
 export const sendMail = async (
-  mailObject: string,
-  mailContent: string,
-  protectedData: string,
-  contentType?: string,
-  senderName?: string
+  mailObject,
+  mailContent,
+  protectedData,
+  contentType,
+  senderName
 ) => {
   try {
     const account = getAccount();

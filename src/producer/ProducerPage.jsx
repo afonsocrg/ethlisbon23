@@ -36,7 +36,7 @@ export default function ProducerPage() {
         <Header style={{ backgroundColor: 'transparent' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ fontStyle: 'italic', color: 'black' }}>
-              <TruncatedText value={address as string} />
+              <TruncatedText value={address} />
             </div>
             <Button type="primary" onClick={handleDisconnect}>
               Disconnect

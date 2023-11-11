@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { Tooltip, Snackbar } from '@mui/material';
 import { shortAddress } from '../utils';
 
-type TruncatedTextProps = {
-  value: string;
-};
-export default function TruncatedText({ value }: TruncatedTextProps) {
+export default function TruncatedText({ value }) {
   const [isTooltipOpen, setTooltipOpen] = useState(false);
   const [isSnackbarOpen, setSnackbarOpen] = useState(false);
 
