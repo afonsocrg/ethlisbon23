@@ -125,6 +125,7 @@ const MapComponent = ({ owner_address }) => {
   const [mapCenter, setMapCenter] = useState({ lat: 39.3994124, lng: -9.0845949 });
 
   const [protectedData, setProtectedData] = useState([]);
+  const [selectLocationData, setSelectLocationData] = useState([]);
 
   useEffect(() => {
     const fetchProtectedData = async () => {
@@ -142,6 +143,26 @@ const MapComponent = ({ owner_address }) => {
     };
     fetchProtectedData();
   }, []);
+
+  useEffect(() => {
+    const fetchProtectedData = async () => {
+      try {
+        const protectedData = await fetchProtectedDataFunc(selectedLocation.address);
+        console.log("protectedData", protectedData);
+        setSelectLocationData(protectedData);
+
+      } catch (error) {
+        console.log("error", error);
+        notification.error({
+          message: "Error",
+          description: String(error),
+        });
+      }
+    };
+    if (selectedLocation) {
+      fetchProtectedData();
+    }
+  }, [selectedLocation]);
 
   const pieConfig = {
     appendPadding: 10,
@@ -206,8 +227,8 @@ const MapComponent = ({ owner_address }) => {
           </div>
         </div>
       </TabPane>
-      <TabPane tab="Actions" key="2">
-        <Table dataSource={dummyTableData} columns={columns} size="small" />
+      <TabPane tab="Events" key="2">
+        <Table dataSource={selectLocationData} columns={columns} size="small" />
       </TabPane>
     </Tabs>
   );
